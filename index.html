@@ -1,38 +1,25 @@
 <!DOCTYPE html>
-<html lang="tr">
-
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gizlilik Politikası - QuickScan AI</title>
+    <title>Privacy Policy - QuickScan AI</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Clash+Display:wght@400;500;600;700&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            /* QuickScan PDF Scanner Theme Colors */
-            --adobe-red: #EC1C24;
-            --adobe-red-dark: #B40000;
-            --adobe-red-light: #FF5F52;
-
-            /* Futuristic Dark Palette */
-            --deep-space: #0A0A0A;
-            --metallic-dark: #1E1E1E;
-            --metallic-light: #2D2D2D;
-            --text-white: #EDEDED;
-            --text-gray: #AAAAAA;
-
-            /* Neon Accents */
-            --neon-cyan: #00E5FF;
-            --glass-white: rgba(255, 255, 255, 0.12);
-            --glass-border: rgba(255, 255, 255, 0.18);
-
-            /* Shadows & Effects */
-            --shadow-red: 0 10px 40px -10px rgba(236, 28, 36, 0.4);
-            --shadow-dark: 0 8px 32px -4px rgba(0, 0, 0, 0.6);
-            --shadow-glow: 0 0 20px rgba(0, 229, 255, 0.3);
-            --radius: 16px;
+            --scanner-red: #FF3B30;
+            --scanner-dark: #0D0D0D;
+            --scanner-surface: #1A1A1A;
+            --scanner-border: #2A2A2A;
+            --text-primary: #FFFFFF;
+            --text-secondary: #A0A0A0;
+            --text-tertiary: #606060;
+            --accent-cyan: #00D9FF;
+            --accent-green: #34C759;
+            --glass-bg: rgba(255, 255, 255, 0.03);
+            --glass-border: rgba(255, 255, 255, 0.08);
         }
 
         * {
@@ -42,141 +29,204 @@
         }
 
         body {
-            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-            background-color: var(--deep-space);
-            background-image:
-                radial-gradient(circle at 10% 20%, rgba(236, 28, 36, 0.15) 0%, transparent 40%),
-                radial-gradient(circle at 90% 80%, rgba(0, 229, 255, 0.1) 0%, transparent 40%),
-                radial-gradient(circle at 50% 50%, rgba(30, 30, 30, 0.5) 0%, transparent 100%);
-            background-attachment: fixed;
-            color: var(--text-white);
+            font-family: 'Outfit', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--scanner-dark);
+            color: var(--text-primary);
             line-height: 1.7;
-            padding: 20px;
-            min-height: 100vh;
-            position: relative;
             overflow-x: hidden;
+            position: relative;
         }
 
-        /* Animated Background Grid */
+        /* Animated scanning line background */
         body::before {
             content: '';
             position: fixed;
             top: 0;
             left: 0;
-            width: 100%;
-            height: 100%;
-            background-image:
-                linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px),
-                linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
-            background-size: 50px 50px;
-            z-index: 0;
+            right: 0;
+            height: 2px;
+            background: linear-gradient(90deg, 
+                transparent 0%, 
+                var(--scanner-red) 20%, 
+                var(--accent-cyan) 50%, 
+                var(--scanner-red) 80%, 
+                transparent 100%);
+            animation: scanLine 4s linear infinite;
+            z-index: 1000;
+            opacity: 0.6;
+        }
+
+        @keyframes scanLine {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
+        }
+
+        /* Grid pattern background */
+        body::after {
+            content: '';
+            position: fixed;
+            inset: 0;
+            background-image: 
+                linear-gradient(rgba(255, 59, 48, 0.03) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255, 59, 48, 0.03) 1px, transparent 1px);
+            background-size: 60px 60px;
             pointer-events: none;
+            z-index: 0;
         }
 
         .container {
-            max-width: 900px;
+            max-width: 1000px;
             margin: 0 auto;
+            padding: 0 24px;
             position: relative;
             z-index: 1;
         }
 
-        /* Header Styles */
+        /* Header */
         header {
+            padding: 120px 0 80px;
             text-align: center;
-            padding: 80px 20px 60px;
+            position: relative;
+        }
+
+        .logo-container {
             margin-bottom: 40px;
             position: relative;
+            display: inline-block;
         }
 
-        .icon-wrapper {
-            width: 100px;
-            height: 100px;
-            background: linear-gradient(135deg, var(--adobe-red), var(--adobe-red-light));
-            border-radius: 28px;
-            display: inline-flex;
+        .logo-icon {
+            width: 120px;
+            height: 120px;
+            background: linear-gradient(135deg, var(--scanner-red), #FF6B6B);
+            border-radius: 32px;
+            display: flex;
             align-items: center;
             justify-content: center;
-            margin-bottom: 32px;
-            box-shadow: var(--shadow-red);
-            font-size: 48px;
-            color: white;
-            transform: rotate(-8deg);
-            transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+            font-size: 56px;
             position: relative;
+            transform: rotate(-3deg);
+            box-shadow: 
+                0 20px 60px rgba(255, 59, 48, 0.4),
+                inset 0 1px 0 rgba(255, 255, 255, 0.2);
+            animation: float 6s ease-in-out infinite;
         }
 
-        .icon-wrapper::before {
+        @keyframes float {
+            0%, 100% { transform: rotate(-3deg) translateY(0px); }
+            50% { transform: rotate(-3deg) translateY(-10px); }
+        }
+
+        .logo-icon::before {
             content: '';
             position: absolute;
-            inset: -2px;
-            background: linear-gradient(135deg, var(--adobe-red), var(--neon-cyan));
-            border-radius: 28px;
+            inset: -3px;
+            background: linear-gradient(135deg, var(--scanner-red), var(--accent-cyan));
+            border-radius: 34px;
             z-index: -1;
             opacity: 0;
-            transition: opacity 0.4s;
+            animation: glow 3s ease-in-out infinite;
         }
 
-        header:hover .icon-wrapper {
-            transform: rotate(0deg) scale(1.1);
+        @keyframes glow {
+            0%, 100% { opacity: 0; }
+            50% { opacity: 0.5; }
         }
 
-        header:hover .icon-wrapper::before {
-            opacity: 0.6;
+        .logo-icon::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, white, transparent);
+            animation: scan 2s ease-in-out infinite;
+            opacity: 0.4;
+        }
+
+        @keyframes scan {
+            0% { transform: translateY(-60px); opacity: 0; }
+            50% { opacity: 0.6; }
+            100% { transform: translateY(60px); opacity: 0; }
+        }
+
+        h1 {
+            font-family: 'Clash Display', sans-serif;
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 700;
+            margin-bottom: 16px;
+            background: linear-gradient(135deg, 
+                var(--text-primary) 0%,
+                var(--accent-cyan) 50%,
+                var(--scanner-red) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            letter-spacing: -0.02em;
+            line-height: 1.1;
+        }
+
+        .subtitle {
+            font-size: 1.25rem;
+            color: var(--text-secondary);
+            font-weight: 400;
+            margin-bottom: 32px;
+        }
+
+        .last-updated {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px 28px;
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 100px;
+            font-size: 0.9rem;
+            color: var(--text-secondary);
+            backdrop-filter: blur(20px);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .last-updated::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.1), transparent);
+            animation: shimmer 3s infinite;
+        }
+
+        @keyframes shimmer {
+            0% { left: -100%; }
+            100% { left: 100%; }
+        }
+
+        .last-updated-icon {
+            width: 8px;
+            height: 8px;
+            background: var(--accent-green);
+            border-radius: 50%;
+            box-shadow: 0 0 12px var(--accent-green);
             animation: pulse 2s ease-in-out infinite;
         }
 
         @keyframes pulse {
-
-            0%,
-            100% {
-                opacity: 0.4;
-            }
-
-            50% {
-                opacity: 0.8;
-            }
+            0%, 100% { opacity: 1; transform: scale(1); }
+            50% { opacity: 0.6; transform: scale(0.9); }
         }
 
-        h1 {
-            font-size: 3rem;
-            font-weight: 800;
-            margin-bottom: 16px;
-            background: linear-gradient(135deg, var(--adobe-red), var(--adobe-red-light), var(--neon-cyan));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            letter-spacing: -0.04em;
-            text-shadow: 0 0 40px rgba(236, 28, 36, 0.3);
-        }
-
-        .subtitle {
-            color: var(--text-gray);
-            font-size: 1.2rem;
-            font-weight: 500;
-        }
-
-        .last-updated {
-            display: inline-block;
-            margin-top: 20px;
-            padding: 10px 24px;
-            background: var(--glass-white);
-            backdrop-filter: blur(10px);
-            border: 1px solid var(--glass-border);
-            border-radius: 50px;
-            font-size: 0.9rem;
-            color: var(--text-white);
-            box-shadow: var(--shadow-dark);
-        }
-
-        /* Content Styles */
+        /* Intro Card */
         .intro-card {
-            background: var(--glass-white);
-            backdrop-filter: blur(20px);
-            padding: 40px;
-            border-radius: var(--radius);
-            box-shadow: var(--shadow-dark);
-            margin-bottom: 40px;
+            background: var(--glass-bg);
             border: 1px solid var(--glass-border);
+            border-radius: 24px;
+            padding: 48px;
+            margin-bottom: 60px;
+            backdrop-filter: blur(20px);
             position: relative;
             overflow: hidden;
         }
@@ -186,43 +236,52 @@
             position: absolute;
             top: 0;
             left: 0;
-            width: 100%;
-            height: 3px;
-            background: linear-gradient(90deg, var(--adobe-red), var(--neon-cyan), var(--adobe-red));
-            background-size: 200% 100%;
-            animation: shimmer 3s linear infinite;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(90deg, 
+                transparent,
+                var(--scanner-red),
+                var(--accent-cyan),
+                transparent);
         }
 
-        @keyframes shimmer {
-            0% {
-                background-position: -200% 0;
-            }
+        .intro-card p {
+            font-size: 1.05rem;
+            color: var(--text-secondary);
+            margin-bottom: 20px;
+        }
 
-            100% {
-                background-position: 200% 0;
-            }
+        .intro-card p:last-child {
+            margin-bottom: 0;
         }
 
         .intro-card strong {
-            color: var(--adobe-red-light);
+            color: var(--text-primary);
+            font-weight: 600;
         }
 
-        /* Accordion Styles */
+        .highlight-box {
+            background: rgba(255, 59, 48, 0.1);
+            border-left: 3px solid var(--scanner-red);
+            padding: 20px 24px;
+            border-radius: 12px;
+            margin-top: 24px;
+        }
+
+        /* Policy Sections */
         .policy-section {
-            background: var(--glass-white);
-            backdrop-filter: blur(20px);
-            margin-bottom: 20px;
-            border-radius: var(--radius);
-            overflow: hidden;
-            box-shadow: var(--shadow-dark);
+            margin-bottom: 24px;
+            background: var(--glass-bg);
             border: 1px solid var(--glass-border);
-            transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+            border-radius: 20px;
+            overflow: hidden;
+            backdrop-filter: blur(20px);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
 
         .policy-section:hover {
-            transform: translateY(-4px);
-            box-shadow: var(--shadow-dark), 0 0 30px rgba(236, 28, 36, 0.2);
-            border-color: rgba(236, 28, 36, 0.3);
+            border-color: rgba(255, 59, 48, 0.3);
+            transform: translateX(4px);
         }
 
         details {
@@ -230,17 +289,19 @@
         }
 
         summary {
-            padding: 28px;
+            padding: 32px;
             cursor: pointer;
-            font-weight: 700;
-            font-size: 1.15rem;
-            color: var(--text-white);
+            font-family: 'Clash Display', sans-serif;
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: var(--text-primary);
             list-style: none;
             display: flex;
             align-items: center;
             justify-content: space-between;
             user-select: none;
             position: relative;
+            transition: all 0.3s ease;
         }
 
         summary::-webkit-details-marker {
@@ -251,47 +312,38 @@
             content: '';
             position: absolute;
             left: 0;
-            top: 50%;
-            transform: translateY(-50%);
-            width: 4px;
-            height: 0;
-            background: linear-gradient(180deg, var(--adobe-red), var(--neon-cyan));
-            border-radius: 2px;
-            transition: height 0.3s;
+            top: 0;
+            bottom: 0;
+            width: 3px;
+            background: linear-gradient(180deg, var(--scanner-red), var(--accent-cyan));
+            transform: scaleY(0);
+            transition: transform 0.3s ease;
         }
 
         details[open] summary::before {
-            height: 60%;
+            transform: scaleY(1);
         }
 
-        summary::after {
-            content: '+';
-            font-size: 2rem;
-            color: var(--adobe-red);
-            font-weight: 300;
-            transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
-            width: 36px;
-            height: 36px;
+        .summary-icon {
+            width: 44px;
+            height: 44px;
+            border-radius: 12px;
+            background: rgba(255, 59, 48, 0.1);
             display: flex;
             align-items: center;
             justify-content: center;
-            background: rgba(236, 28, 36, 0.1);
-            border-radius: 8px;
+            font-size: 1.5rem;
+            transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
         }
 
-        details[open] summary::after {
-            transform: rotate(135deg);
-            background: var(--adobe-red);
-            color: white;
-        }
-
-        details[open] summary {
-            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        details[open] .summary-icon {
+            background: var(--scanner-red);
+            transform: rotate(180deg);
         }
 
         .section-content {
-            padding: 32px 28px;
-            color: var(--text-gray);
+            padding: 0 32px 32px 32px;
+            color: var(--text-secondary);
             animation: slideDown 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
         }
 
@@ -300,98 +352,115 @@
                 opacity: 0;
                 transform: translateY(-20px);
             }
-
             to {
                 opacity: 1;
                 transform: translateY(0);
             }
         }
 
-        /* Typography inside sections */
         h3 {
-            color: var(--text-white);
-            margin: 24px 0 12px 0;
-            font-size: 1.1rem;
+            color: var(--text-primary);
+            font-size: 1.15rem;
             font-weight: 600;
+            margin: 28px 0 16px 0;
+            display: flex;
+            align-items: center;
+            gap: 12px;
         }
 
         h3:first-child {
             margin-top: 0;
         }
 
+        h3::before {
+            content: '';
+            width: 4px;
+            height: 20px;
+            background: linear-gradient(180deg, var(--scanner-red), var(--accent-cyan));
+            border-radius: 2px;
+        }
+
         ul {
             list-style: none;
-            margin-left: 0;
+            margin: 16px 0;
         }
 
         li {
-            margin-bottom: 14px;
             padding-left: 32px;
+            margin-bottom: 16px;
             position: relative;
+            font-size: 1rem;
+            line-height: 1.8;
         }
 
         li::before {
             content: '';
             position: absolute;
             left: 8px;
-            top: 11px;
-            width: 8px;
-            height: 8px;
-            background: linear-gradient(135deg, var(--adobe-red), var(--neon-cyan));
+            top: 12px;
+            width: 6px;
+            height: 6px;
+            background: var(--scanner-red);
             border-radius: 50%;
-            box-shadow: 0 0 10px rgba(236, 28, 36, 0.5);
+            box-shadow: 0 0 8px var(--scanner-red);
         }
 
         li strong {
-            color: var(--text-white);
+            color: var(--text-primary);
             font-weight: 600;
         }
 
-        .section-content a {
-            color: var(--neon-cyan);
+        a {
+            color: var(--accent-cyan);
             text-decoration: none;
-            font-weight: 600;
-            transition: all 0.3s;
+            font-weight: 500;
             position: relative;
+            transition: all 0.3s ease;
         }
 
-        .section-content a::after {
+        a::after {
             content: '';
             position: absolute;
             bottom: -2px;
             left: 0;
             width: 0;
             height: 2px;
-            background: var(--neon-cyan);
-            transition: width 0.3s;
+            background: var(--accent-cyan);
+            transition: width 0.3s ease;
         }
 
-        .section-content a:hover::after {
+        a:hover::after {
             width: 100%;
         }
 
-        .section-content a:hover {
-            text-shadow: var(--shadow-glow);
+        a:hover {
+            color: var(--text-primary);
         }
 
-        .section-content em {
-            color: var(--text-gray);
+        em {
+            color: var(--text-tertiary);
             font-style: italic;
-            opacity: 0.8;
+            display: block;
+            margin-top: 16px;
+            padding: 16px;
+            background: rgba(255, 255, 255, 0.02);
+            border-radius: 8px;
+            border-left: 2px solid var(--scanner-border);
         }
 
         /* Contact Box */
         .contact-box {
-            background: linear-gradient(135deg, var(--adobe-red-dark), var(--adobe-red));
-            color: white;
-            padding: 50px;
-            border-radius: var(--radius);
+            margin: 80px 0;
+            padding: 60px;
+            background: linear-gradient(135deg, 
+                rgba(255, 59, 48, 0.2) 0%,
+                rgba(0, 217, 255, 0.1) 100%);
+            border: 1px solid var(--glass-border);
+            border-radius: 32px;
             text-align: center;
-            margin-top: 60px;
             position: relative;
             overflow: hidden;
-            box-shadow: var(--shadow-red);
-            border: 1px solid rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(20px);
         }
 
         .contact-box::before {
@@ -401,284 +470,307 @@
             left: -50%;
             width: 200%;
             height: 200%;
-            background: radial-gradient(circle, rgba(0, 229, 255, 0.1) 0%, transparent 70%);
-            animation: rotate 20s linear infinite;
-            pointer-events: none;
+            background: radial-gradient(circle, rgba(255, 59, 48, 0.1) 0%, transparent 70%);
+            animation: rotate 15s linear infinite;
         }
 
         @keyframes rotate {
-            0% {
-                transform: rotate(0deg);
-            }
-
-            100% {
-                transform: rotate(360deg);
-            }
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
         }
 
         .contact-box h3 {
-            font-size: 1.8rem;
-            margin-bottom: 12px;
+            font-family: 'Clash Display', sans-serif;
+            font-size: 2rem;
+            margin: 0 0 16px 0;
             position: relative;
+        }
+
+        .contact-box h3::before {
+            display: none;
         }
 
         .contact-box p {
-            color: rgba(255, 255, 255, 0.9);
-            margin: 20px 0;
+            color: var(--text-secondary);
+            font-size: 1.1rem;
+            margin-bottom: 32px;
             position: relative;
-            font-size: 1.05rem;
         }
 
         .contact-btn {
-            display: inline-block;
-            margin-top: 24px;
-            padding: 16px 40px;
-            background: white;
-            color: var(--adobe-red);
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            padding: 18px 40px;
+            background: var(--scanner-red);
+            color: white;
             text-decoration: none;
-            border-radius: 50px;
-            font-weight: 700;
+            border-radius: 100px;
+            font-weight: 600;
             font-size: 1.05rem;
             transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
             position: relative;
             z-index: 2;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 10px 40px rgba(255, 59, 48, 0.4);
+        }
+
+        .contact-btn::after {
+            content: '→';
+            transition: transform 0.3s ease;
         }
 
         .contact-btn:hover {
             transform: translateY(-4px) scale(1.05);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
-            background: var(--neon-cyan);
-            color: var(--deep-space);
+            box-shadow: 0 20px 60px rgba(255, 59, 48, 0.6);
+            background: linear-gradient(135deg, var(--scanner-red), var(--accent-cyan));
         }
 
+        .contact-btn:hover::after {
+            transform: translateX(4px);
+        }
+
+        /* Footer */
         footer {
-            text-align: center;
             padding: 60px 0 40px;
-            color: var(--text-gray);
+            text-align: center;
+            color: var(--text-tertiary);
             font-size: 0.95rem;
-            border-top: 1px solid rgba(255, 255, 255, 0.05);
-            margin-top: 40px;
+            border-top: 1px solid var(--scanner-border);
+            margin-top: 60px;
         }
 
-        /* Responsive Design */
+        footer p {
+            margin-bottom: 8px;
+        }
+
+        /* Responsive */
         @media (max-width: 768px) {
             h1 {
-                font-size: 2.2rem;
+                font-size: 2.5rem;
             }
 
-            .container {
-                padding: 0 10px;
-            }
-
-            header {
-                padding: 60px 10px 40px;
+            .logo-icon {
+                width: 100px;
+                height: 100px;
+                font-size: 48px;
             }
 
             .intro-card,
             .contact-box {
-                padding: 30px 24px;
+                padding: 32px 24px;
             }
 
             summary {
-                padding: 20px;
-                font-size: 1rem;
+                padding: 24px;
+                font-size: 1.1rem;
             }
 
             .section-content {
-                padding: 24px 20px;
+                padding: 0 24px 24px 24px;
             }
 
-            .icon-wrapper {
-                width: 80px;
-                height: 80px;
-                font-size: 36px;
+            .contact-box h3 {
+                font-size: 1.6rem;
             }
         }
 
         @media (max-width: 480px) {
+            header {
+                padding: 80px 0 60px;
+            }
+
             h1 {
-                font-size: 1.8rem;
+                font-size: 2rem;
             }
 
             .subtitle {
                 font-size: 1rem;
             }
 
-            .contact-box h3 {
-                font-size: 1.4rem;
+            .logo-icon {
+                width: 80px;
+                height: 80px;
+                font-size: 40px;
             }
+        }
+
+        /* Smooth scrolling */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Selection color */
+        ::selection {
+            background: var(--scanner-red);
+            color: white;
         }
     </style>
 </head>
-
 <body>
-
     <div class="container">
         <header>
-            <div class="icon-wrapper">
-                🛡️
+            <div class="logo-container">
+                <div class="logo-icon">🛡️</div>
             </div>
-            <h1>Gizlilik Politikası</h1>
-            <p class="subtitle"><span class="company-name">QuickScan AI</span> - PDF Scanner</p>
-            <div class="last-updated">Son Güncelleme: <span id="current-date"></span></div>
+            <h1>Privacy Policy</h1>
+            <p class="subtitle">QuickScan AI - PDF Scanner</p>
+            <div class="last-updated">
+                <span class="last-updated-icon"></span>
+                <span>Last Updated: <strong>January 28, 2025</strong></span>
+            </div>
         </header>
 
         <div class="intro-card">
-            <p><strong>BulkarApp</strong> olarak, <strong>QuickScan AI – PDF Scanner</strong> uygulamasını kullanan
-                her kullanıcının gizliliğine derin bir saygı duyuyoruz. QuickScan AI, belgelerinizi taramak, düzenlemek
-                ve PDF formatında kaydetmek için geliştirilmiş bir mobil uygulamadır. Bu gizlilik politikası,
-                uygulamanın hangi verileri topladığını, nasıl kullandığını ve nasıl koruduğunu açıklar.</p>
-            <p style="margin-top: 16px;"><strong>Önemli:</strong> QuickScan AI, taradığınız belgeleri ve oluşturduğunuz
-                PDF dosyalarını yalnızca cihazınızda yerel olarak saklar. Belgeleriniz hiçbir zaman sunucularımıza
-                yüklenmez.</p>
+            <p>As <strong>BulkarApp</strong>, we deeply respect the privacy of every user of the <strong>QuickScan AI – PDF Scanner</strong> application. QuickScan AI is a mobile application developed to scan, edit, and save your documents in PDF format. This privacy policy explains what data the application collects, how it is used, and how it is protected.</p>
+            
+            <div class="highlight-box">
+                <p style="margin: 0;"><strong>Important:</strong> QuickScan AI stores the documents you scan and the PDF files you create locally on your device only. Your documents are never uploaded to our servers.</p>
+            </div>
         </div>
 
-        <!-- 1. Toplanan Bilgiler -->
         <div class="policy-section">
             <details open>
-                <summary>1. Toplanan Bilgiler</summary>
+                <summary>
+                    1. Information We Collect
+                    <div class="summary-icon">▼</div>
+                </summary>
                 <div class="section-content">
-                    <p>Uygulamalarımızı mümkün olan en az veriyi toplayacak şekilde tasarlıyoruz. Genel olarak
-                        topladığımız veriler şunlardır:</p>
-                    <h3>1.1. Otomatik Toplanan Veriler</h3>
+                    <p>We design our applications to collect the minimum amount of data possible. In general, the data we collect includes:</p>
+                    
+                    <h3>1.1. Automatically Collected Data</h3>
                     <ul>
-                        <li><strong>Cihaz Bilgileri:</strong> Cihaz modeli, işletim sistemi sürümü, dil tercihleri ve
-                            benzersiz cihaz tanımlayıcıları (Advertising ID gibi).</li>
-                        <li><strong>Kullanım Verileri:</strong> Uygulama içi etkileşimler, oturum süreleri ve kilitlenme
-                            (crash) raporları. Bu veriler uygulamayı geliştirmek ve hataları gidermek için kullanılır.
-                        </li>
+                        <li><strong>Device Information:</strong> Device model, operating system version, language preferences, and unique device identifiers (such as Advertising ID).</li>
+                        <li><strong>Usage Data:</strong> In-app interactions, session durations, and crash reports. This data is used to improve the application and fix bugs.</li>
                     </ul>
-                    <h3>1.2. Sizin Sağladığınız Veriler</h3>
+
+                    <h3>1.2. Data You Provide</h3>
                     <ul>
-                        <li>Uygulama içinde oluşturduğunuz içerikler (notlar, çizimler, taramalar, PDF dosyaları vb.)
-                            cihazınızda yerel olarak saklanır ve sunucularımıza yüklenmez.</li>
-                        <li>Bizimle iletişime geçmeniz durumunda e-posta adresiniz yalnızca size yanıt vermek için
-                            kullanılır.</li>
-                    </ul>
-                </div>
-            </details>
-        </div>
-
-        <!-- 2. İzinler -->
-        <div class="policy-section">
-            <details>
-                <summary>2. Cihaz İzinleri</summary>
-                <div class="section-content">
-                    <p>QuickScan AI uygulaması işlevselliklerini yerine getirebilmek için belirli izinler talep eder. Bu
-                        izinler yalnızca gerektiğinde istenir:</p>
-                    <ul>
-                        <li><strong>Kamera:</strong> Belge tarama, fotoğraf çekme ve QR kod okutma özellikleri için.
-                        </li>
-                        <li><strong>Depolama / Galeri:</strong> PDF dosyalarını kaydetmek, düzenlemek, galeriden görsel
-                            seçmek veya paylaşmak için.</li>
-                        <li><strong>İnternet:</strong> Veri senkronizasyonu, reklam gösterimi, analiz hizmetleri ve
-                            uygulama içi satın alma işlemleri için.</li>
-                    </ul>
-                    <p><em>Bu izinleri istediğiniz zaman cihaz ayarlarından kapatabilirsiniz, ancak bu durum uygulamanın
-                            bazı özelliklerinin çalışmamasına neden olabilir.</em></p>
-                </div>
-            </details>
-        </div>
-
-        <!-- 3. Üçüncü Taraflar -->
-        <div class="policy-section">
-            <details>
-                <summary>3. Üçüncü Taraf Hizmetleri</summary>
-                <div class="section-content">
-                    <p>Uygulamalarımızı ücretsiz sunabilmek ve geliştirebilmek için güvenilir üçüncü taraf hizmet
-                        sağlayıcıları kullanıyoruz. Bu sağlayıcıların kendi gizlilik politikaları geçerlidir:</p>
-                    <ul>
-                        <li><strong>Google AdMob:</strong> Reklam gösterimi için. Size uygun reklamlar sunmak amacıyla
-                            cihaz tanımlayıcılarını kullanabilir.</li>
-                        <li><strong>Google Firebase:</strong> Analitik veriler ve hata raporları (Crashlytics) toplamak
-                            için.</li>
-                        <li><strong>Google ML Kit:</strong> Optik karakter tanıma (OCR) ve doküman tarama özellikleri
-                            için cihaz üzerinde çalışır.</li>
-                    </ul>
-                    <p><a href="https://policies.google.com/privacy" target="_blank">Google Gizlilik Politikası'nı
-                            inceleyin →</a></p>
-                </div>
-            </details>
-        </div>
-
-        <!-- 4. Veri Güvenliği -->
-        <div class="policy-section">
-            <details>
-                <summary>4. Veri Güvenliği</summary>
-                <div class="section-content">
-                    <p>Verilerinizi korumak için endüstri standardı güvenlik önlemleri alıyoruz. QuickScan AI ile
-                        taradığınız tüm belgeler cihazınızda yerel olarak saklanır ve şifrelenir.</p>
-                    <p>Kişisel verilerinizi (varsa) asla üçüncü şahıslara <strong>satmıyoruz</strong>.</p>
-                    <p><em>Ancak, internet üzerinden yapılan hiçbir iletimin veya elektronik depolama yönteminin %100
-                            güvenli olmadığını lütfen unutmayın.</em></p>
-                </div>
-            </details>
-        </div>
-
-        <!-- 5. Çocukların Gizliliği -->
-        <div class="policy-section">
-            <details>
-                <summary>5. Çocukların Gizliliği</summary>
-                <div class="section-content">
-                    <p>Uygulamalarımız genel izleyici kitlesine yöneliktir. 13 yaşın altındaki çocuklardan bilerek
-                        kişisel veri toplamıyoruz. Eğer ebeveynseniz ve çocuğunuzun bize veri sağladığını
-                        düşünüyorsanız, lütfen iletişime geçin; verileri derhal sileriz.</p>
-                </div>
-            </details>
-        </div>
-
-        <!-- 6. Haklarınız -->
-        <div class="policy-section">
-            <details>
-                <summary>6. Yasal Haklarınız (KVKK & GDPR)</summary>
-                <div class="section-content">
-                    <p>Bulunduğunuz bölgeye bağlı olarak (Türkiye/KVKK veya Avrupa/GDPR), verileriniz üzerinde şu
-                        haklara sahipsiniz:</p>
-                    <ul>
-                        <li>Hangi verilerin tutulduğunu öğrenme.</li>
-                        <li>Verilerin silinmesini veya düzeltilmesini talep etme.</li>
-                        <li>Veri işlemeye itiraz etme.</li>
-                        <li>Reklam kişiselleştirmesini cihaz ayarlarından (Ayarlar > Google > Reklamlar) kapatma.</li>
+                        <li>Content you create within the application (notes, drawings, scans, PDF files, etc.) is stored locally on your device and is not uploaded to our servers.</li>
+                        <li>If you contact us, your email address will only be used to respond to you.</li>
                     </ul>
                 </div>
             </details>
         </div>
 
-        <!-- 7. Veri Saklama -->
         <div class="policy-section">
             <details>
-                <summary>7. Veri Saklama ve Silme</summary>
+                <summary>
+                    2. Device Permissions
+                    <div class="summary-icon">▼</div>
+                </summary>
                 <div class="section-content">
-                    <p>QuickScan AI uygulaması içinde oluşturduğunuz tüm belgeler ve PDF dosyaları cihazınızda yerel
-                        olarak saklanır. Bu verileri istediğiniz zaman uygulamadan veya cihaz dosya yöneticinizden
-                        silebilirsiniz.</p>
-                    <p>Uygulamayı kaldırdığınızda, tüm uygulama verileri de cihazınızdan silinir.</p>
+                    <p>The QuickScan AI application requests specific permissions to perform its functions. These permissions are only requested when necessary:</p>
+                    
+                    <ul>
+                        <li><strong>Camera:</strong> For document scanning, photo capture, and QR code reading features.</li>
+                        <li><strong>Storage / Gallery:</strong> To save, edit, select images from the gallery, or share PDF files.</li>
+                        <li><strong>Internet:</strong> For data synchronization, ad display, analytics services, and in-app purchase transactions.</li>
+                    </ul>
+
+                    <em>You can disable these permissions at any time from your device settings, but this may cause some features of the application to not work.</em>
                 </div>
             </details>
         </div>
 
-        <!-- İletişim -->
+        <div class="policy-section">
+            <details>
+                <summary>
+                    3. Third-Party Services
+                    <div class="summary-icon">▼</div>
+                </summary>
+                <div class="section-content">
+                    <p>We use reliable third-party service providers to offer our applications for free and to improve them. These providers have their own privacy policies:</p>
+                    
+                    <ul>
+                        <li><strong>Google AdMob:</strong> For displaying ads. May use device identifiers to serve you relevant ads.</li>
+                        <li><strong>Google Firebase:</strong> For collecting analytics data and crash reports (Crashlytics).</li>
+                        <li><strong>Google ML Kit:</strong> Works on-device for optical character recognition (OCR) and document scanning features.</li>
+                    </ul>
+
+                    <p><a href="https://policies.google.com/privacy" target="_blank">Review Google's Privacy Policy →</a></p>
+                </div>
+            </details>
+        </div>
+
+        <div class="policy-section">
+            <details>
+                <summary>
+                    4. Data Security
+                    <div class="summary-icon">▼</div>
+                </summary>
+                <div class="section-content">
+                    <p>We take industry-standard security measures to protect your data. All documents you scan with QuickScan AI are stored locally on your device and encrypted.</p>
+                    
+                    <p>We <strong>never sell</strong> your personal data (if any) to third parties.</p>
+
+                    <em>However, please note that no method of transmission over the internet or electronic storage is 100% secure.</em>
+                </div>
+            </details>
+        </div>
+
+        <div class="policy-section">
+            <details>
+                <summary>
+                    5. Children's Privacy
+                    <div class="summary-icon">▼</div>
+                </summary>
+                <div class="section-content">
+                    <p>Our applications are intended for a general audience. We do not knowingly collect personal data from children under 13. If you are a parent and believe your child has provided us with data, please contact us; we will delete the data immediately.</p>
+                </div>
+            </details>
+        </div>
+
+        <div class="policy-section">
+            <details>
+                <summary>
+                    6. Your Legal Rights (GDPR & CCPA)
+                    <div class="summary-icon">▼</div>
+                </summary>
+                <div class="section-content">
+                    <p>Depending on your region (Europe/GDPR or California/CCPA), you have the following rights over your data:</p>
+                    
+                    <ul>
+                        <li>Learn what data is being held.</li>
+                        <li>Request deletion or correction of data.</li>
+                        <li>Object to data processing.</li>
+                        <li>Disable ad personalization from device settings (Settings > Google > Ads).</li>
+                    </ul>
+                </div>
+            </details>
+        </div>
+
+        <div class="policy-section">
+            <details>
+                <summary>
+                    7. Data Retention and Deletion
+                    <div class="summary-icon">▼</div>
+                </summary>
+                <div class="section-content">
+                    <p>All documents and PDF files you create within the QuickScan AI application are stored locally on your device. You can delete this data at any time from the application or your device's file manager.</p>
+                    
+                    <p>When you uninstall the application, all application data is also deleted from your device.</p>
+                </div>
+            </details>
+        </div>
+
         <div class="contact-box">
-            <h3>Sorularınız mı var?</h3>
-            <p>Gizlilik politikamız veya uygulamalarımız hakkında her türlü sorunuz için bize ulaşabilirsiniz.</p>
-            <a href="mailto:support@bulkarteam.com" class="contact-btn" id="contact-link">support@bulkarapp.com</a>
+            <h3>Have Questions?</h3>
+            <p>For any questions about our privacy policy or applications, feel free to contact us.</p>
+            <a href="mailto:support@bulkarapp.com" class="contact-btn">support@bulkarapp.com</a>
         </div>
 
         <footer>
-            <p>&copy; <span id="year"></span> BulkarApp Tüm hakları saklıdır.</p>
-            <p style="margin-top: 10px; opacity: 0.6;">QuickScan AI – PDF Scanner</p>
+            <p>&copy; <span id="year"></span> BulkarApp. All rights reserved.</p>
+            <p>QuickScan AI – PDF Scanner</p>
         </footer>
-
     </div>
 
     <script>
-        // Tarihi otomatik güncelle
-        document.getElementById('current-date').textContent = '28 Ocak 2025';
+        // Set current year
         document.getElementById('year').textContent = new Date().getFullYear();
 
-        // İlk bölümü varsayılan olarak aç
-        document.addEventListener('DOMContentLoaded', function () {
+        // Open first section by default
+        document.addEventListener('DOMContentLoaded', function() {
             const firstDetails = document.querySelector('details');
             if (firstDetails) {
                 firstDetails.setAttribute('open', '');
@@ -686,5 +778,4 @@
         });
     </script>
 </body>
-
 </html>
