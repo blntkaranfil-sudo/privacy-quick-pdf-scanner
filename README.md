@@ -1,0 +1,1 @@
+# privacy-quick-pdf-scanner
